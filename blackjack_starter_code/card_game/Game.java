@@ -1,5 +1,5 @@
 package card_game;
-import card_game.*;
+// import card_game.*;
 
 import java.util.*;
 
@@ -30,8 +30,29 @@ public class Game {
     return this.deck;
   }
 
+  public Integer getPlayerCount(){
+    Integer playerCounter = 0;
+    System.out.println("Please enter player numbers from 2-7");
+    Scanner scanner = new Scanner(System.in);
+    playerCounter = Integer.parseInt(scanner.nextLine());
+    return playerCounter;
+  }
+
+  public void getPlayerDetails(){
+    int counter = (players.size()) +1;
+      System.out.println("Player " + counter + ", Enter Name: ");
+      Scanner scanner = new Scanner(System.in);
+      Player player = new Player(scanner.nextLine());
+      addPlayer(player);
+  }
+
+
   public void addPlayer(Player player){
     players.add(player);
+  }
+
+  public ArrayList<Player> getPlayers(){
+    return players;
   }
 
   public int playerCount(){
