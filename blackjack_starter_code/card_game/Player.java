@@ -5,7 +5,7 @@ import java.util.*;
 public class Player {
 
   private String name;
-  private static ArrayList<Card> hand = new ArrayList<Card>();
+  private ArrayList<Card> hand = new ArrayList<Card>();
 
   public Player(String name){
     this.name = name;
@@ -28,12 +28,25 @@ public class Player {
     return this.hand;
   }
 
-  public String printHand(){
+  public String printFirstHand(){
     return this.hand.get(0).toString() + ", " + this.hand.get(1).toString();
   }
 
+  public String printHand(){
+    String printString = "";
+    for(Card card : this.hand){
+      printString += card.toString() + ", ";
+    }
+    return printString;
+  }
+
+
   public int sumHand(){
-    return this.hand.get(0).getNumber() + this.hand.get(1).getNumber();
+    int total = 0;
+    for(Card card : this.hand){
+      total += card.getNumber();
+    }
+    return total;
   }
 
 }

@@ -72,23 +72,25 @@ public class Game {
     } 
   }
 
+  public void isBust(Player player){
+    int total = player.sumHand();
+    if(total > 21){
+      System.out.println("Sorry" + player.getName() + " you are bust");
+      this.players.remove(player);
+    }
+  }
+
   public void stickOrTwist(){
     for (Player player : this.players){
-      System.out.println(player.getName() + " has " + player.printHand() + " a total of " + player.sumHand());
+      System.out.println(player.getName() + " has " + player.printFirstHand() + " a total of " + player.sumHand());
       System.out.println("Would you like to stick or twist?");
       Scanner scanner = new Scanner(System.in);
       String response = scanner.nextLine();
       if(response == "twist"){
         twist(player);
         System.out.println(player.getName() + " has " + player.printHand() + " a total of " + player.sumHand());
+        isBust(player);
       }
-
     }
   }
-
-
-
-
-
-
 }
