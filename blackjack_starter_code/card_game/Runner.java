@@ -12,6 +12,7 @@ public class Runner{
       game.getPlayerDetails();
     }
     game.deal();
+    game.stickOrTwist();
     String winner = WinChecker.winningHand(game.getPlayers());
     System.out.println("The winner is " + winner);
 }

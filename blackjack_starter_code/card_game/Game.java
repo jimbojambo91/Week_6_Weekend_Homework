@@ -40,10 +40,10 @@ public class Game {
 
   public void getPlayerDetails(){
     int counter = (players.size()) +1;
-      System.out.println("Player " + counter + ", Enter Name: ");
-      Scanner scanner = new Scanner(System.in);
-      Player player = new Player(scanner.nextLine());
-      addPlayer(player);
+    System.out.println("Player " + counter + ", Enter Name: ");
+    Scanner scanner = new Scanner(System.in);
+    Player player = new Player(scanner.nextLine());
+    addPlayer(player);
   }
 
 
@@ -59,6 +59,11 @@ public class Game {
     return players.size();
   }
 
+  public void twist(Player player){
+    player.addToHand(deck.get(0));
+    deck.remove(0);
+  }
+
   public void deal(){
     for (Player player : this.players){
       player.setHand(deck.get(0), deck.get(1));
@@ -66,6 +71,22 @@ public class Game {
       deck.remove(0);
     } 
   }
+
+  public void stickOrTwist(){
+    for (Player player : this.players){
+      System.out.println(player.getName() + " has " + player.printHand() + " a total of " + player.sumHand());
+      System.out.println("Would you like to stick or twist?");
+      Scanner scanner = new Scanner(System.in);
+      String response = scanner.nextLine();
+      if(response == "twist"){
+        twist(player);
+        System.out.println(player.getName() + " has " + player.printHand() + " a total of " + player.sumHand());
+      }
+
+    }
+  }
+
+
 
 
 
